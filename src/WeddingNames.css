@@ -1,0 +1,44 @@
+.draw-name {
+  --delay: 0s;
+
+  fill: transparent;
+  stroke: #7c7c7c;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+
+  animation:
+    drawText 3s ease-in-out var(--delay) forwards,
+    fillText 1s ease-in-out calc(var(--delay) + 2.5s) forwards;
+}
+
+.draw-name-delay-1 {
+  --delay: 1s;
+}
+
+.draw-name-delay-2 {
+  --delay: 2s;
+}
+
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillText {
+  to {
+    fill: #7c7c7c;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-name {
+    animation: none;
+    fill: #7c7c7c;
+    stroke-dashoffset: 0;
+  }
+}

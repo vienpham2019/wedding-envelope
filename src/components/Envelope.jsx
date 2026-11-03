@@ -160,6 +160,10 @@ export default function Envelope() {
           />
         )}
       </div>
+      <p className="text-center font-[Judson] text-[1rem] italic leading-relaxed sm:text-[1.4rem]">
+        <br />
+        Click to open invitation
+      </p>
     </button>
   );
 }

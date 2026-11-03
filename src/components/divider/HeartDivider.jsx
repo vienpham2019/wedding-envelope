@@ -1,4 +1,4 @@
-export default function WeddingDivider({
+export default function HeartDivider({
   width = "3rem",
   maxWidth = "30rem",
   color = "#CAB74D",

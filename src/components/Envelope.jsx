@@ -18,6 +18,72 @@ const easeInOutCubic = (t) => {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 };
 
+function OpenInvitationButton({ color = "#B78D42", onClick }) {
+  return (
+    <div className=" w-full items-center justify-center md:block hidden">
+      <div className="flex w-full max-w-[600px] items-center justify-center gap-2 md:gap-3">
+        {/* Left line */}
+        <div
+          className="h-px min-w-0 flex-1"
+          style={{ backgroundColor: color }}
+        />
+
+        {/* Left diamond */}
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 14 14"
+          className="shrink-0"
+          fill="none"
+        >
+          <path d="M7 1 L13 7 L7 13 L1 7 Z" stroke={color} strokeWidth="1.5" />
+        </svg>
+
+        {/* Center button */}
+        <button
+          type="button"
+          onClick={onClick}
+          className="
+            relative shrink-0
+            rounded-[18px]
+            border px-4 py-2
+            text-[10px] italic
+            transition-all duration-300
+            hover:scale-[1.03]
+            hover:bg-[#B78D42]/10
+            sm:px-6 lg:text-[14px]
+            md:px-10 xl:text-[20px]
+          "
+          style={{
+            borderColor: color,
+            color: color,
+            fontFamily: "'Cormorant Garamond', serif",
+          }}
+        >
+          Click to open invitation
+        </button>
+
+        {/* Right diamond */}
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 14 14"
+          className="shrink-0"
+          fill="none"
+        >
+          <path d="M7 1 L13 7 L7 13 L1 7 Z" stroke={color} strokeWidth="1.5" />
+        </svg>
+
+        {/* Right line */}
+        <div
+          className="h-px min-w-0 flex-1"
+          style={{ backgroundColor: color }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function Envelope() {
   const [isOpened, setIsOpened] = useState(false);
   const [frame, setFrame] = useState(0);
@@ -160,10 +226,7 @@ export default function Envelope() {
           />
         )}
       </div>
-      <p className="text-center font-[Judson] text-[1rem] italic leading-relaxed sm:text-[1.4rem]">
-        <br />
-        Click to open invitation
-      </p>
+      <OpenInvitationButton />
     </button>
   );
 }

@@ -72,3 +72,101 @@ body {
 .envelope-shadow {
   animation: envelopeShadow 3.5s ease-in-out infinite;
 }
+
+@keyframes weddingEqualizer {
+  0%,
+  100% {
+    height: 6px;
+  }
+
+  25% {
+    height: 24px;
+  }
+
+  50% {
+    height: 12px;
+  }
+
+  75% {
+    height: 32px;
+  }
+}
+
+.music-bar-playing {
+  animation: weddingEqualizer 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-bar-playing {
+    animation: none;
+    height: 12px;
+  }
+}
+
+.ink-reveal {
+  --reveal-size: 0%;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse at 50% 50%,
+    black 0%,
+    black calc(var(--reveal-size) - 12%),
+    transparent var(--reveal-size)
+  );
+
+  mask-image: radial-gradient(
+    ellipse at 50% 50%,
+    black 0%,
+    black calc(var(--reveal-size) - 12%),
+    transparent var(--reveal-size)
+  );
+
+  animation: inkSpread 2.5s ease-out forwards;
+}
+
+@keyframes inkSpread {
+  0% {
+    --reveal-size: 0%;
+  }
+
+  100% {
+    --reveal-size: 150%;
+  }
+}
+
+@property --reveal-size {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink-reveal {
+    animation: none;
+    --reveal-size: 150%;
+  }
+}
+
+/* Wedding playlist scrollbar */
+.wedding-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c9924d transparent;
+}
+
+/* Chrome, Safari, Edge */
+.wedding-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.wedding-scrollbar::-webkit-scrollbar-track {
+  background: #f8ebd8;
+  border-radius: 10px;
+}
+
+.wedding-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e6c99f, #c9924d);
+  border-radius: 10px;
+}
+
+.wedding-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a87536;
+}

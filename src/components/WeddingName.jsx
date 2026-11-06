@@ -6,7 +6,7 @@ export default function WeddingNames() {
   return (
     <div className="w-full flex justify-center px-4">
       {/* Mobile + Tablet: one line */}
-      <svg viewBox="0 0 600 100" className="block lg:hidden w-full  h-auto">
+      <svg viewBox="0 0 600 100" className="block xl:hidden w-full  h-auto">
         <g className="draw-name">
           <text
             x="300"
@@ -21,11 +21,11 @@ export default function WeddingNames() {
       </svg>
 
       {/* Desktop: three lines */}
-      <svg viewBox="0 0 500 260" className="hidden lg:block w-full">
+      <svg viewBox="0 0 500 260" className="hidden xl:block w-full">
         {/* Top: left */}
         <g className="draw-name">
           <text
-            x="20"
+            x="50"
             y="65"
             textAnchor="start"
             fontFamily={fontFamily}
@@ -40,7 +40,7 @@ export default function WeddingNames() {
             y="155"
             textAnchor="start"
             fontFamily={fontFamily}
-            fontSize="60"
+            fontSize="50"
           >
             &amp;
           </text>
@@ -49,7 +49,7 @@ export default function WeddingNames() {
         {/* Bottom: right */}
         <g className="draw-name draw-name-delay-2">
           <text
-            x="470"
+            x="420"
             y="235"
             textAnchor="end"
             fontFamily={fontFamily}

@@ -35,12 +35,14 @@ function WeddingCorner({ color = "#C8A46B", className = "" }) {
 function BorderLines({
   color = "#C8A46B",
   inset = 0,
-  cornerSize = 70,
-  cornerGap = 12,
+  cornerSize = "clamp(35px, 5vw, 70px)",
+  cornerGap = "0px",
   thickness = 1,
   opacity = 1,
 }) {
-  const gap = `calc(${cornerSize}px + ${cornerGap}px)`;
+  const css = (value) => (typeof value === "number" ? `${value}px` : value);
+
+  const gap = `calc(${css(cornerSize)} - 13px + ${css(cornerGap)})`;
 
   const lineStyle = {
     backgroundColor: color,
@@ -48,10 +50,7 @@ function BorderLines({
   };
 
   return (
-    <div
-      className="pointer-events-none absolute"
-      style={{ inset: `${inset}px` }}
-    >
+    <div className="pointer-events-none absolute" style={{ inset: css(inset) }}>
       {/* Top */}
       <div
         className="absolute top-0"
@@ -101,13 +100,20 @@ function BorderLines({
 
 export default function WeddingBorder({
   color = "#C8A46B",
-  inset = 12,
-  cornerSize = 70,
-  cornerGap = 12,
-  innerGap = 8,
+  inset = "clamp(10px, 2vw, 24px)",
+  cornerSize = "clamp(35px, 6vw, 50px)",
+  cornerGap = 0,
+  innerGap = "clamp(4px, 0.7vw, 8px)",
 }) {
+  const css = (value) => (typeof value === "number" ? `${value}px` : value);
+
+  const cornerStyle = {
+    width: css(cornerSize),
+    height: css(cornerSize),
+  };
+
   return (
-    <div className="pointer-events-none absolute z-20" style={{ inset }}>
+    <div className="pointer-events-none absolute" style={{ inset: css(inset) }}>
       {/* Outer border */}
       <BorderLines
         color={color}
@@ -127,12 +133,22 @@ export default function WeddingBorder({
         opacity={0.5}
       />
 
+      {/* Top left */}
+      <div
+        className="absolute -left-3 -top-2"
+        style={{
+          ...cornerStyle,
+          transform: "scaleX(1)",
+        }}
+      >
+        <WeddingCorner color={color} />
+      </div>
+
       {/* Top right */}
       <div
-        className="absolute right-0 top-0"
+        className="absolute -right-3 -top-2"
         style={{
-          width: cornerSize,
-          height: cornerSize,
+          ...cornerStyle,
           transform: "scaleX(-1)",
         }}
       >
@@ -141,11 +157,21 @@ export default function WeddingBorder({
 
       {/* Bottom left */}
       <div
-        className="absolute bottom-0 left-0"
+        className="absolute -bottom-2 -left-2"
         style={{
-          width: cornerSize,
-          height: cornerSize,
+          ...cornerStyle,
           transform: "scaleY(-1)",
+        }}
+      >
+        <WeddingCorner color={color} />
+      </div>
+
+      {/* Bottom right */}
+      <div
+        className="absolute -bottom-2 -right-2"
+        style={{
+          ...cornerStyle,
+          transform: "scale(-1,-1)",
         }}
       >
         <WeddingCorner color={color} />
